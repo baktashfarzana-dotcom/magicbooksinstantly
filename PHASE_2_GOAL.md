@@ -116,8 +116,9 @@ Codex will control the local browser and perform these checks:
 11. Use the Redo image route once implemented and confirm one page image changes while ownership remains protected.
 
 ## Current Project Snapshot
-- The local folder is **not currently a git repository**, so change review cannot use `git status` yet.
-- The dynamic story schema, prompt, local fallback generation, `/api/bake-story`, Supabase storage upload, Story Kitchen length selector, pre-made templates, and flipbook companion UI already exist.
-- `phase-2-e2e.mjs` already tests quick, standard, and weekend story bakes with 15, 22, and 30 images.
-- Real image-provider generation depends on `STORY_IMAGE_MODEL` and provider credentials.
-- The dedicated parent-facing **Regenerate Image** API route/button is still the main missing Phase 2 feature.
+- The local folder is a Git repository on `main` and tracks `origin/main`.
+- The dynamic story schema, prompt, local fallback generation, `/api/bake-story`, Supabase storage upload, Story Kitchen length selector, pre-made templates, and flipbook companion UI are implemented.
+- The parent Library/Approval Queue reads real generated `Stories` and `Images` rows and exposes per-page image redo controls.
+- The dedicated parent-facing **Regenerate Image** API route is implemented at `/api/stories/[storyId]/images/[pageNumber]/regenerate`.
+- `phase-2-e2e.mjs` tests quick, standard, and weekend story bakes with 15, 22, and 30 images, RLS isolation, storage isolation, and single-page image regeneration.
+- Real image-provider generation is wired through `STORY_IMAGE_MODEL`; deterministic local SVG storyboards keep tests passing when paid provider credentials are not installed.

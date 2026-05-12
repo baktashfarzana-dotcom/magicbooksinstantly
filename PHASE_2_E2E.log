@@ -1,13 +1,14 @@
 PHASE_2_E2E PASS
-Generated: 2026-05-12T06:21:58.762Z
+Generated: 2026-05-12T15:57:30.984Z
 
 [PASS] anonymous reads are blocked: Anonymous client cannot read story or image rows.
 [PASS] parent-one can sign in: Signed in as 11111111-1111-4111-8111-111111111111.
 [PASS] parent-two can sign in: Signed in as 22222222-2222-4222-8222-222222222222.
-[PASS] parent-one can bake bedtime worries: Baked story 10e84897-79ab-4d2d-9fb9-0b1778405ef9 with 15 anchored images via local-storyboard.
-[PASS] parent-one can bake sharing toys: Baked story a53c6013-ed30-4942-816b-217f9b176f2c with 22 anchored images via local-storyboard.
-[PASS] parent-two can bake trying new foods: Baked story bc742f15-d8e7-425a-9913-8b54e1716029 with 30 anchored images via local-storyboard.
+[PASS] parent-one can bake bedtime worries: Baked story b114d648-7d3e-4d22-a2bb-de92c2964aeb with 15 anchored images via local-storyboard.
+[PASS] parent-one can bake sharing toys: Baked story 11c72168-198d-45fb-a0b0-03c874fd9837 with 22 anchored images via local-storyboard.
+[PASS] parent-two can bake trying new foods: Baked story 747dbce6-3792-43a8-a609-02e6fb4eb2dc with 30 anchored images via local-storyboard.
 [PASS] three-story bake contract: Automated parents baked quick, standard, and weekend stories.
 [PASS] parent RLS isolates story rows: Parent one can read own story and cannot read parent two story.
 [PASS] storage RLS isolates image objects: Parent one cannot download parent two image object.
+[PASS] single image regeneration updates one page: Page one image metadata was replaced while preserving the master anchor.
 

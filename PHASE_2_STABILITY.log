@@ -1,10 +1,12 @@
 PHASE_2_STABILITY PASS
-Generated: 2026-05-12T06:54:29.754Z
+Generated: 2026-05-12T15:58:23.967Z
 
 [PASS] schema migration exists: Stories, Images, and story-images storage policies are defined.
 [PASS] bake API exists: /api/bake-story coordinates story JSON, image assets, storage upload, and status updates.
+[PASS] image regeneration API exists: Parents can regenerate a single page image through an owner-scoped API route.
 [PASS] dynamic story contract: StoryBook output supports 6/10/13-minute lengths, companion reactions, power words, and quizzes.
 [PASS] character consistency anchor: Master anchor prompt is reused for every page image prompt.
 [PASS] flipbook UI: Child-safe flipbook has previous/next controls and GPU-friendly page animation.
+[PASS] parent approval queue: Library reads generated stories and exposes per-page redo controls before child review.
 
 Browser/Vision note: the full 3-story bake requires an authenticated browser session with test LivingProfiles.

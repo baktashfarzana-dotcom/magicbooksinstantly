@@ -175,52 +175,62 @@ export async function generatePageImages({
   story: StoryBook;
   masterAnchorPrompt: string;
 }) {
-  const anchorColor = "#1f6fff";
-
   return Promise.all(
-    story.pages.map(async (page): Promise<GeneratedImageAsset> => {
-      const prompt = buildImagePrompt(page, masterAnchorPrompt);
-
-      if (gatewayAvailable() && process.env.STORY_IMAGE_MODEL) {
-        try {
-          const result = await generateImage({
-            model: process.env.STORY_IMAGE_MODEL,
-            prompt,
-            size: "1280x832",
-            maxRetries: 1,
-          });
-          const image = result.images[0];
-
-          if (image?.uint8Array) {
-            return {
-              page,
-              prompt,
-              bytes: image.uint8Array,
-              contentType: image.mediaType ?? "image/png",
-              extension: image.mediaType?.includes("jpeg") ? "jpg" : "png",
-              provider: process.env.STORY_IMAGE_MODEL,
-            };
-          }
-        } catch (error) {
-          console.warn(`Image generation fell back for page ${page.page_number}`, error);
-        }
-      }
-
-      const svg = renderStoryboardSvg({
-        childName: profile.child_name,
-        title: story.title,
-        page,
-        anchorColor,
-      });
-
-      return {
-        page,
-        prompt,
-        bytes: new TextEncoder().encode(svg),
-        contentType: "image/svg+xml",
-        extension: "svg",
-        provider: "local-storyboard",
-      };
-    }),
+    story.pages.map((page) => generateSinglePageImage({ profile, story, masterAnchorPrompt, page })),
   );
+}
+
+export async function generateSinglePageImage({
+  profile,
+  story,
+  masterAnchorPrompt,
+  page,
+}: {
+  profile: LivingProfile;
+  story: StoryBook;
+  masterAnchorPrompt: string;
+  page: StoryPage;
+}): Promise<GeneratedImageAsset> {
+  const prompt = buildImagePrompt(page, masterAnchorPrompt);
+
+  if (gatewayAvailable() && process.env.STORY_IMAGE_MODEL) {
+    try {
+      const result = await generateImage({
+        model: process.env.STORY_IMAGE_MODEL,
+        prompt,
+        size: "1280x832",
+        maxRetries: 1,
+      });
+      const image = result.images[0];
+
+      if (image?.uint8Array) {
+        return {
+          page,
+          prompt,
+          bytes: image.uint8Array,
+          contentType: image.mediaType ?? "image/png",
+          extension: image.mediaType?.includes("jpeg") ? "jpg" : "png",
+          provider: process.env.STORY_IMAGE_MODEL,
+        };
+      }
+    } catch (error) {
+      console.warn(`Image generation fell back for page ${page.page_number}`, error);
+    }
+  }
+
+  const svg = renderStoryboardSvg({
+    childName: profile.child_name,
+    title: story.title,
+    page,
+    anchorColor: "#1f6fff",
+  });
+
+  return {
+    page,
+    prompt,
+    bytes: new TextEncoder().encode(svg),
+    contentType: "image/svg+xml",
+    extension: "svg",
+    provider: "local-storyboard",
+  };
 }

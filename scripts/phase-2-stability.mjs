@@ -28,6 +28,14 @@ await record("bake API exists", async () => {
   return "/api/bake-story coordinates story JSON, image assets, storage upload, and status updates.";
 });
 
+await record("image regeneration API exists", async () => {
+  const route = await readFile("app/api/stories/[storyId]/images/[pageNumber]/regenerate/route.ts", "utf8");
+  if (!route.includes("generateSinglePageImage") || !route.includes(".eq(\"user_id\", user.id)")) {
+    throw new Error("The redo image route is missing generation or owner checks.");
+  }
+  return "Parents can regenerate a single page image through an owner-scoped API route.";
+});
+
 await record("dynamic story contract", async () => {
   const schema = await readFile("lib/story-engine/schema.ts", "utf8");
   if (!schema.includes("STORY_LENGTH_OPTIONS") || !schema.includes("companion_reaction") || !schema.includes("knowledge_loop_quiz")) {
@@ -50,6 +58,14 @@ await record("flipbook UI", async () => {
     throw new Error("Flipbook navigation or animation class is missing.");
   }
   return "Child-safe flipbook has previous/next controls and GPU-friendly page animation.";
+});
+
+await record("parent approval queue", async () => {
+  const library = await readFile("app/(dashboard)/library/page.tsx", "utf8");
+  if (!library.includes(".from(\"Stories\")") || !library.includes("RegenerateImageButton")) {
+    throw new Error("Library queue is not wired to real stories or redo controls.");
+  }
+  return "Library reads generated stories and exposes per-page redo controls before child review.";
 });
 
 const passed = checks.every((check) => check.status === "PASS");

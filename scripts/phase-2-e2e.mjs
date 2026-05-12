@@ -1,6 +1,6 @@
 import { appendFile, readFile, writeFile } from "node:fs/promises";
 import { createClient } from "@supabase/supabase-js";
-import { generatePageImages, generateStoryBook } from "../lib/story-engine/generate.ts";
+import { generatePageImages, generateSinglePageImage, generateStoryBook } from "../lib/story-engine/generate.ts";
 import { getStoryLengthConfig } from "../lib/story-engine/schema.ts";
 
 const loadEnvFile = async (path) => {
@@ -284,6 +284,102 @@ await record("storage RLS isolates image objects", async () => {
   }
 
   return "Parent one cannot download parent two image object.";
+});
+
+await record("single image regeneration updates one page", async () => {
+  const firstBake = bakes.find((bake) => bake.label === "parent-one");
+  if (!firstBake) {
+    throw new Error("Missing parent-one baked story.");
+  }
+
+  const { data: storyRow, error: storyError } = await firstBake.supabase
+    .from("Stories")
+    .select("id, living_profile_id, story_json, master_anchor_prompt")
+    .eq("id", firstBake.storyId)
+    .single();
+
+  if (storyError || !storyRow) {
+    throw new Error(storyError?.message ?? "Missing story for regeneration.");
+  }
+
+  const { data: profile, error: profileError } = await firstBake.supabase
+    .from("LivingProfiles")
+    .select("id, child_name, age, visual_anchor")
+    .eq("id", storyRow.living_profile_id)
+    .single();
+
+  if (profileError || !profile) {
+    throw new Error(profileError?.message ?? "Missing profile for regeneration.");
+  }
+
+  const { data: beforeImage, error: beforeError } = await firstBake.supabase
+    .from("Images")
+    .select("id, storage_path")
+    .eq("story_id", firstBake.storyId)
+    .eq("page_number", 1)
+    .single();
+
+  if (beforeError || !beforeImage) {
+    throw new Error(beforeError?.message ?? "Missing page one image before regeneration.");
+  }
+
+  const story = storyRow.story_json;
+  const page = story.pages.find((candidate) => candidate.page_number === 1);
+  if (!page) {
+    throw new Error("Story JSON is missing page one.");
+  }
+
+  const image = await generateSinglePageImage({
+    profile,
+    story,
+    masterAnchorPrompt: storyRow.master_anchor_prompt,
+    page,
+  });
+  const storagePath = `${firstBake.userId}/${firstBake.storyId}/phase2-e2e-page-01-redo-${Date.now()}.${image.extension}`;
+  const upload = await firstBake.supabase.storage
+    .from("story-images")
+    .upload(storagePath, image.bytes, {
+      contentType: image.contentType,
+      upsert: true,
+    });
+
+  if (upload.error) {
+    throw upload.error;
+  }
+
+  const { error: updateError } = await firstBake.supabase
+    .from("Images")
+    .update({
+      prompt: image.prompt,
+      consistency_anchor: storyRow.master_anchor_prompt,
+      storage_bucket: "story-images",
+      storage_path: storagePath,
+      generation_provider: image.provider,
+    })
+    .eq("id", beforeImage.id)
+    .eq("user_id", firstBake.userId);
+
+  if (updateError) {
+    throw updateError;
+  }
+
+  const { data: afterImage, error: afterError } = await firstBake.supabase
+    .from("Images")
+    .select("storage_path, prompt")
+    .eq("id", beforeImage.id)
+    .single();
+
+  if (afterError || !afterImage) {
+    throw new Error(afterError?.message ?? "Missing page one image after regeneration.");
+  }
+  if (afterImage.storage_path === beforeImage.storage_path) {
+    throw new Error("Regenerated image did not replace the storage path.");
+  }
+  if (!afterImage.prompt.includes(storyRow.master_anchor_prompt)) {
+    throw new Error("Regenerated image prompt lost the master anchor.");
+  }
+
+  return "Page one image metadata was replaced while preserving the master anchor.";
 });
 
 const passed = checks.every((check) => check.status === "PASS");
