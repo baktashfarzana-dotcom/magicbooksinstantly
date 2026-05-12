@@ -88,5 +88,5 @@ This item is complete when:
 - [x] Vercel has the required public production environment variables.
 - [x] A Vercel production deployment URL loads.
 - [x] Vercel is connected to the GitHub repository for push-based deployments.
-- [ ] GitHub Actions run the Build & Test workflow successfully after the next pushed commit.
-- [ ] Codex Browser verifies the live URL renders the homepage and protected routes redirect correctly.
+- [x] GitHub Actions run the Build & Test workflow successfully after the next pushed commit.
+- [x] Vercel fetch/browser verification confirms the live URL renders the homepage and protected `/dashboard` redirects to login.
