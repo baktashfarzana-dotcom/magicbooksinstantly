@@ -11,11 +11,13 @@ Phase 1: Bedrock & Identity Foundation.
 This Codex desktop session also includes a project-local official Node runtime at `.tools/node-official` because the bundled Codex Node runtime blocks native Next.js compiler packages on this machine.
 
 ## Cloud Setup
-- Link the project to Vercel.
-- Add the environment variables from `.env.example`.
+- GitHub repository: `https://github.com/baktashfarzana-dotcom/magicbooksinstantly`
+- Vercel production URL: `https://magicbooksinstantly.vercel.app`
+- Vercel Git integration is connected to the GitHub repository.
+- Add any remaining private provider secrets from `.env.example` before enabling AI, audio, or billing features.
 - Configure Supabase Auth redirect URLs:
   - `http://localhost:3000/callback`
-  - `https://<your-vercel-domain>/callback`
+  - `https://magicbooksinstantly.vercel.app/callback`
 - See `PHASE_1_CICD_STATUS.md` for the current GitHub/Vercel linkage status and exact remaining remote setup steps.
 
 ## Security
