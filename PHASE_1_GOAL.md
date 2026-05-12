@@ -91,6 +91,8 @@ Codex will perform these browser checks without asking the user to click manuall
 9. Simulate offline mode after PWA setup and confirm cached shell/book assets still load.
 
 ## Current Project Snapshot
-- The local folder is **not currently a git repository**, so Phase 1 version-control status cannot be verified with `git status` yet.
+- The local folder is now a Git repository on `main` with the first commit `184b513 Initialize MagicBooksInstantly foundation`.
+- No GitHub `origin` remote is configured yet because the GitHub connector currently reports no installed accounts/repositories and `gh` is not installed in the shell.
+- Vercel team access is visible through the Vercel connector, but project linking/deployment still requires Vercel CLI authentication or dashboard setup.
 - Existing migrations already cover `Users`, `LivingProfiles`, `Stories`, generated images, automated test users, and treasury/audio tables.
 - A dedicated database-backed `Templates` table and PWA service worker/manifest still need to be added before Phase 1 can be marked fully complete.

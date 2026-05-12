@@ -16,6 +16,7 @@ This Codex desktop session also includes a project-local official Node runtime a
 - Configure Supabase Auth redirect URLs:
   - `http://localhost:3000/callback`
   - `https://<your-vercel-domain>/callback`
+- See `PHASE_1_CICD_STATUS.md` for the current GitHub/Vercel linkage status and exact remaining remote setup steps.
 
 ## Security
 See `SECURITY_VERIFICATION_LOG.md` for the RLS verification checklist.
