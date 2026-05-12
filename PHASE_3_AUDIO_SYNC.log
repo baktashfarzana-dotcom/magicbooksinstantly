@@ -1,0 +1,10 @@
+PHASE_3_AUDIO_SYNC PASS
+Generated: 2026-05-12T06:54:32.751Z
+
+[PASS] automated child session signs in: Signed in 11111111-1111-4111-8111-111111111111.
+[PASS] living profile is available: Using Avery Phase.
+[PASS] parent voice clone profile is persisted: Voice profile mock-elevenlabs-11111111 stored.
+[PASS] Azure-style word tracking completes page: mock-azure scored 100% and awarded 25 Star Dust.
+[PASS] Star Dust reward persisted: Balance moved from 100 to 125.
+[PASS] Stripe test mode path is configured: No Stripe secret; mock test checkout is active.
+

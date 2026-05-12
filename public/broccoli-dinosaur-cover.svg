@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1180" viewBox="0 0 900 1180" role="img" aria-label="The Broccoli Dinosaur storybook cover">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#83dfff"/>
+      <stop offset=".38" stop-color="#d4f8d4"/>
+      <stop offset="1" stop-color="#3b8d52"/>
+    </linearGradient>
+    <linearGradient id="coverEdge" x1="0" x2="1">
+      <stop offset="0" stop-color="#173f2d"/>
+      <stop offset=".5" stop-color="#34704d"/>
+      <stop offset="1" stop-color="#173f2d"/>
+    </linearGradient>
+    <radialGradient id="skin" cx=".45" cy=".32" r=".55">
+      <stop offset="0" stop-color="#f7c7a5"/>
+      <stop offset=".72" stop-color="#c98b64"/>
+      <stop offset="1" stop-color="#9f6244"/>
+    </radialGradient>
+    <radialGradient id="broccoliTop" cx=".45" cy=".35" r=".7">
+      <stop offset="0" stop-color="#92e76a"/>
+      <stop offset=".55" stop-color="#42a845"/>
+      <stop offset="1" stop-color="#1d692f"/>
+    </radialGradient>
+    <filter id="bookShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="26" dy="32" stdDeviation="24" flood-color="#18251b" flood-opacity=".32"/>
+    </filter>
+    <filter id="titleShadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="7" stdDeviation="2" flood-color="#5e3318" flood-opacity=".56"/>
+    </filter>
+    <filter id="paintDepth" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#24492e" flood-opacity=".24"/>
+    </filter>
+  </defs>
+  <g filter="url(#bookShadow)">
+    <path d="M64 40 L782 18 C824 17 850 44 850 84 L850 1084 C850 1116 829 1138 797 1140 L64 1170 Z" fill="url(#coverEdge)"/>
+    <path d="M91 65 L795 43 C816 42 829 56 829 78 L829 1075 C829 1091 819 1103 803 1105 L91 1134 Z" fill="url(#sky)"/>
+    <path d="M822 75 L862 101 L862 1098 L822 1078 Z" fill="#e1f0d6"/>
+    <path d="M833 92 L852 104 L852 1082 L833 1073 Z" fill="#85a76d"/>
+    <path d="M91 65 L795 43 C816 42 829 56 829 78 L829 1075 C829 1091 819 1103 803 1105 L91 1134 Z" fill="none" stroke="#145333" stroke-width="18"/>
+    <path d="M91 800 C222 720 326 750 431 805 C542 863 665 830 829 734 L829 1105 L91 1134 Z" fill="#2d9148"/>
+    <path d="M90 309 C175 205 314 176 448 227 C586 280 698 241 829 132 L829 44 L91 65 Z" fill="#bdf4bb" opacity=".42"/>
+    <g opacity=".9">
+      <circle cx="92" cy="194" r="75" fill="#3f9644"/>
+      <circle cx="153" cy="136" r="84" fill="#5ab64e"/>
+      <circle cx="766" cy="126" r="84" fill="#4da146"/>
+      <circle cx="831" cy="198" r="75" fill="#72bd56"/>
+      <path d="M106 165 C112 282 96 342 42 432" fill="none" stroke="#69421f" stroke-width="12" stroke-linecap="round"/>
+      <path d="M788 148 C760 244 770 307 834 391" fill="none" stroke="#69421f" stroke-width="12" stroke-linecap="round"/>
+    </g>
+    <g filter="url(#titleShadow)" font-family="Arial Rounded MT Bold, Trebuchet MS, Arial, sans-serif" font-weight="900" text-anchor="middle">
+      <text x="450" y="154" font-size="62" fill="#fff2c8" stroke="#9c6138" stroke-width="12" paint-order="stroke">The</text>
+      <text x="450" y="230" font-size="92" fill="#ffd89a" stroke="#9c6138" stroke-width="16" paint-order="stroke">Broccoli</text>
+      <text x="450" y="314" font-size="92" fill="#ffd89a" stroke="#9c6138" stroke-width="16" paint-order="stroke">Dinosaur</text>
+    </g>
+    <g filter="url(#paintDepth)">
+      <path d="M562 755 C582 613 669 522 759 545 C843 566 867 677 797 776 C731 870 626 881 562 755 Z" fill="#79ca60"/>
+      <path d="M630 763 C679 802 745 791 789 732" fill="none" stroke="#376f3a" stroke-width="15" stroke-linecap="round" opacity=".32"/>
+      <path d="M705 546 C730 494 804 475 848 518 C894 565 879 644 815 671 C752 696 677 606 705 546 Z" fill="#9ae47a"/>
+      <circle cx="782" cy="558" r="13" fill="#18261c"/>
+      <circle cx="788" cy="552" r="4" fill="#fff"/>
+      <path d="M810 612 C842 614 862 606 878 590" fill="none" stroke="#ffffff" stroke-width="13" stroke-linecap="round"/>
+      <path d="M676 828 C634 889 574 920 498 930" fill="none" stroke="#4f9149" stroke-width="34" stroke-linecap="round"/>
+    </g>
+    <g filter="url(#paintDepth)">
+      <path d="M229 756 C196 598 205 444 289 363 C364 292 496 335 487 462 C481 548 424 619 357 672 C309 710 278 738 229 756 Z" fill="#64b349"/>
+      <ellipse cx="306" cy="373" rx="112" ry="88" fill="url(#broccoliTop)"/>
+      <ellipse cx="221" cy="410" rx="94" ry="81" fill="url(#broccoliTop)"/>
+      <ellipse cx="384" cy="420" rx="105" ry="91" fill="url(#broccoliTop)"/>
+      <ellipse cx="301" cy="461" rx="128" ry="95" fill="url(#broccoliTop)"/>
+      <path d="M272 512 C271 606 256 681 224 760 C275 749 323 727 361 691 C350 618 351 559 376 499 Z" fill="#72bd56"/>
+      <circle cx="291" cy="620" r="11" fill="#16421d"/>
+      <circle cx="346" cy="606" r="11" fill="#16421d"/>
+      <path d="M291 661 C311 686 343 684 363 656" fill="none" stroke="#16421d" stroke-width="11" stroke-linecap="round"/>
+    </g>
+    <g filter="url(#paintDepth)">
+      <ellipse cx="488" cy="583" rx="96" ry="107" fill="url(#skin)"/>
+      <circle cx="407" cy="595" r="24" fill="#c48460"/>
+      <circle cx="570" cy="595" r="24" fill="#c48460"/>
+      <circle cx="415" cy="479" r="45" fill="#2a1a13"/>
+      <circle cx="466" cy="444" r="56" fill="#2d1b13"/>
+      <circle cx="526" cy="458" r="48" fill="#25160f"/>
+      <circle cx="567" cy="505" r="37" fill="#1b100b"/>
+      <ellipse cx="456" cy="584" rx="17" ry="22" fill="#12151d"/>
+      <ellipse cx="522" cy="584" rx="17" ry="22" fill="#12151d"/>
+      <circle cx="462" cy="577" r="6" fill="#fff"/>
+      <circle cx="528" cy="577" r="6" fill="#fff"/>
+      <path d="M456 648 C482 680 520 679 546 647" fill="#fff" stroke="#7b3f32" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M424 690 C458 732 524 733 556 690 L596 896 L387 902 Z" fill="#79aedd"/>
+      <path d="M370 740 C323 766 286 778 244 776" fill="none" stroke="#c98b64" stroke-width="28" stroke-linecap="round"/>
+      <path d="M601 735 C638 761 661 794 678 837" fill="none" stroke="#c98b64" stroke-width="28" stroke-linecap="round"/>
+      <path d="M415 905 L387 1029" stroke="#c98b64" stroke-width="32" stroke-linecap="round"/>
+      <path d="M548 900 L579 1021" stroke="#c98b64" stroke-width="32" stroke-linecap="round"/>
+      <path d="M385 1035 L462 1035" stroke="#355f93" stroke-width="28" stroke-linecap="round"/>
+      <path d="M545 1027 L620 1027" stroke="#355f93" stroke-width="28" stroke-linecap="round"/>
+    </g>
+    <g filter="url(#titleShadow)" font-family="Arial Rounded MT Bold, Trebuchet MS, Arial, sans-serif" font-weight="900" text-anchor="middle">
+      <text x="455" y="1095" font-size="76" fill="#ffe2aa" stroke="#8c4f2b" stroke-width="15" paint-order="stroke">Adventure</text>
+    </g>
+    <path d="M111 87 L789 66 C799 65 805 72 805 84 L805 1070" fill="none" stroke="#ffffff" stroke-opacity=".42" stroke-width="8"/>
+  </g>
+</svg>
